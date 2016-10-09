@@ -43,6 +43,7 @@
             </div>
             <div class="top-menu">
               <ul class="nav pull-right top-menu">
+                    <li><a class="logout" style="background-color: blue" href="index.html" onclick="submit()">Create Test</a></li>
                     <li><a class="logout" href="login.html">Logout</a></li>
               </ul>
             </div>
@@ -97,97 +98,73 @@
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
       <section id="allquestions">
+        <!-- <h2>Question</h2> -->
       <section id="main-content" name="1">
           <section class="wrapper">
-          	<h3><i class="fa fa-angle-right"></i> To-Do Lists</h3>
-			
-			
           	<!-- SORTABLE TO DO LIST -->
 			       <form>
-              <div class="row mt mb">
+              <div class="row">
                   <div class="col-md-12">
                       <section class="task-panel tasks-widget">
 	                	<div class="panel-heading">
+                          <label><h4>Question</h4></label>
 	                        <div class="form-group">
-                              <label class="col-sm-1"><h4>Question</h4></label>
-                              <div class="col-sm-11">
+                              <div class="col-sm-12">
                                   <input type="text" class="form-control">
                               </div>
                           </div>
 	                 	</div>
                           <div class="panel-body">
-                              <div class="task-content">
-                                  <ul id="sortable" class="task-list">
-                                      <li class="list-primary">
-                                          <i class=" fa fa-ellipsis-v"></i>
-                                          <div class="task-radio">
-                                              <input type="radio" class="form-control" value=""  />
-                                          </div>
-                                          <div class="task-title">
-                                              <div class = "col-sm-11">
-                                                <input type= "text" class="form-title">
+                              <div class="task-content container-fluid">
+                                  <label><h4>Options</h4></label>
+                                  <ul id="sortable">
+                                      <div class="row">
+                                        <li class="list-primary">
+                                              <div class="col-sm-1">
+                                                  <input type="radio" style="float: left;"value="" name="addQuesRadio"  />
                                               </div>
-<!--                                               <span class="badge bg-theme">Done</span>
- -->                                              <div class="pull-right hidden-phone">
-                                                  <button class="btn btn-success btn-xs fa fa-check" onclick="return disable('option_1')"></button>
-                                                  <button class="btn btn-primary btn-xs fa fa-pencil" onclick="return enable('option_1')"></button>
-                                                  <!-- <button class="btn btn-danger btn-xs fa fa-trash-o"></button> -->
+                                              <div class="col-sm-8">
+                                                  <input type="text" class="form-control">
                                               </div>
-                                          </div>
                                       </li>
-
-                                      <li class="list-danger">
-                                          <i class=" fa fa-ellipsis-v"></i>
-                                          <div class="task-radio">
-                                              <input type="radio" class="list-child" value=""  />
-                                          </div>
-                                          <div class="task-title">
-                                              <span id="option_2" class="task-title-sp">Extensive collection of plugins</span>
-                                              <!-- <span class="badge bg-warning">Cool</span> -->
-                                              <div class="pull-right hidden-phone">
-                                                  <button class="btn btn-success btn-xs fa fa-check" onclick="return disable('option_2')"></button>
-                                                  <button class="btn btn-primary btn-xs fa fa-pencil" onclick="return enable('option_2')"></button>
-                                                  <!-- <button class="btn btn-danger btn-xs fa fa-trash-o"></button> -->
+                                      </div>
+                                      
+                                      <div class="row">
+                                        <li class="list-primary">
+                                              <div class="col-sm-1">
+                                                  <input type="radio" style="float: left;"value="" name="addQuesRadio"  />
                                               </div>
-                                          </div>
-                                      </li>
-                                      <li class="list-success">
-                                          <i class=" fa fa-ellipsis-v"></i>
-                                          <div class="task-radio">
-                                              <input type="radio" class="list-child" value=""  />
-                                          </div>
-                                          <div class="task-title">
-                                              <span id="option_3" class="task-title-sp">Free updates always, no extra fees.</span>
-                                              <!-- <span class="badge bg-success">2 Days</span> -->
-                                              <div class="pull-right hidden-phone">
-                                                  <button class="btn btn-success btn-xs fa fa-check" onclick="return disable('option_3')"></button>
-                                                  <button class="btn btn-primary btn-xs fa fa-pencil" onclick="return enable('option_3')"></button>
-                                                  <!-- <button class="btn btn-danger btn-xs fa fa-trash-o"></button> -->
+                                              <div class="col-sm-8">
+                                                  <input type="text" class="form-control">
                                               </div>
-                                          </div>
                                       </li>
-                                      <li class="list-warning">
-                                          <i class=" fa fa-ellipsis-v"></i>
-                                          <div class="task-radio">
-                                              <input type="radio" class="list-child" value=""  />
-                                          </div>
-                                          <div class="task-title">
-                                              <span id="option_4" class="task-title-sp">More features coming soon</span>
-                                              <!-- <span class="badge bg-info">Tomorrow</span> -->
-                                              <div class="pull-right hidden-phone">
-                                                  <button class="btn btn-success btn-xs fa fa-check" onclick="return disable('option_4')"></button>
-                                                  <button class="btn btn-primary btn-xs fa fa-pencil" onclick="return enable('option_4')"></button>
-                                                  <!-- <button class="btn btn-danger btn-xs fa fa-trash-o"></button> -->
+                                      </div>
+                                      <div class="row">
+                                        <li class="list-primary">
+                                              <div class="col-sm-1">
+                                                  <input type="radio" style="float: left;"value="" name="addQuesRadio"  />
                                               </div>
-                                          </div>
+                                              <div class="col-sm-8">
+                                                  <input type="text" class="form-control">
+                                              </div>
                                       </li>
-
+                                      </div>
+                                      <div class="row">
+                                        <li class="list-primary">
+                                              <div class="col-sm-1">
+                                                  <input type="radio" style="float: left;"value="" name="addQuesRadio"  />
+                                              </div>
+                                              <div class="col-sm-8">
+                                                  <input type="text" class="form-control">
+                                              </div>
+                                      </li>
+                                      </div>
                                   </ul>
                               </div>
                               <div class=" add-task-row">
-                                  <a class="btn btn-success btn-sm pull-left" onclick="add()">Add New Tasks</a>
-                                  <a class="btn btn-danger btn-sm pull" id="remove" onclick="remove(this.id)">Delete Tasks</a>
-                                  <a class="btn btn-default btn-sm pull-right" href="todo_list.html#">See All Tasks</a>
+                                  <a class="btn btn-success btn-sm pull-left" onclick="add()">Add Question</a>
+                                  <a class="btn btn-danger btn-sm pull" id="remove" onclick="remove(this.id)">Delete Question</a>
+                                  <!-- <a class="btn btn-default btn-sm pull-right" href="todo_list.html#">See All Tasks</a> -->
                               </div>
                           </div>
                       </section>
@@ -202,7 +179,7 @@
       <!--footer start-->
       <footer class="site-footer">
           <div class="text-center">
-              2014 - Alvarez.is
+              2016-OTP
               <a href="todo_list.html#" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
@@ -270,14 +247,16 @@
     //});
     function add()
     {
-        var clone =$("#main-content").clone().appendTo("#allquestions");
+        var clone =$("#main-content").clone();
         countQuestions++;
         questionID++;
-        clone.find("h4").html('Q');
+        // clone.find("h4").html('Q');
         clone.attr('name',"q"+questionID);
+        clone.find("input:text").val("")
         //alert(clone.attr('name'));
         clone.find("#remove").attr("id",'remove'+questionID);
         // alert(clone.find('#remove'+questionID).attr('id'));
+        clone.appendTo("#allquestions")
     }
 
     function remove(id)
@@ -285,20 +264,6 @@
       var res = id.replace("remove", "");
       $('section[name=q'+res+']').remove();
       countQuestions--;
-      // var i=id+1;
-      //             alert('hello');
-      // while(i<=countQuestions)
-      // {
-      //       alert($('section[name=q'+i+']').find("h4").html('Q'+i));
-      //       $('section[name=q'+i+']').attr('name','q'+(i-1));
-      //       $('section[name=q'+i+']').find("h4").html('Q'+(i-1));
-      //       //alert($('section[name=q'+i+']').attr('name'));
-      //       $('section[name=q'+i+']').find("btn btn-danger btn-sm pull").attr("id",'remove'+(i-1));
-      //       i++;
-          
-      // }
-
-        countQuestions--;
     
     }
     
