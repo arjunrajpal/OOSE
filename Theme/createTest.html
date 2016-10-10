@@ -73,14 +73,14 @@
                   </li>
 
                   <li class="sub-menu">
-                      <a href="createTest.html" >
+                      <a class="active" href="javascript:;" >
                           <i class="fa fa-cogs"></i>
                           <span>Create Test</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
-                      <a class="active" href="viewTest.html">
+                      <a href="viewTest.html">
                           <i class="fa fa-desktop"></i>
                           <span>View Tests</span>
                       </a>
@@ -96,36 +96,40 @@
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
-      <section id="main-content">
+      <section id="main-content" style="padding-top: 70px;">
           <section class="wrapper site-min-height">
-            <h3><i class="fa fa-angle-right"></i>All Tests</h3>
-          <div class="row mt">
-            <div class="col-lg-12">
-                      <!-- <div class="content-panel">
-                      <h4><i class="fa fa-angle-right"></i> Responsive Table</h4> -->
-                          <section id="unseen">
-                            <table id="testsTable" class="table table-bordered table-striped table-condensed">
-                              <thead>
-                              <tr>
-                                  <th>S.No</th>
-                                  <th style="text-align: center;" colspan="2">Test Name</th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                              <!-- <tr style="text-align:center;">
-                                  <td>1</td>
-                                  <td>AUSTRALIAN AGRICULTURAL COMPANY LIMITED.</td>
-                                  <td><button type="button" class="btn btn-primary btn-xs">View Questions</button>
-                                  <button type="button" class="btn btn-warning btn-xs">View Report</button></td>
-                              </tr> -->
-                              </tbody>
-                          </table>
-                          </section>
-                  </div><!-- /content-panel -->
-               </div><!-- /col-lg-4 -->     
-        </div><!-- /row -->
-        </section>
-        </section>
+
+            <div class="row" id="details">
+                <div class="col-lg- main-chart">  
+                   <form class="form-vertical" action="todo_list.html">
+                      <div class="row">
+                        <div class="form-group col-sm-offset-3 col-sm-5">
+                          <label for="name">Test Name:</label>
+                          <input type="text" class="form-control" id="name" required="true">
+                        </div>
+                      </div>
+                    <div class="row">
+                      <div class="form-group col-sm-offset-3 col-sm-5">
+                        <label for="duration">Duration(Minutes)</label>
+                        <input type="number" class="form-control" id="duration" required="true">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-sm-offset-3 col-sm-5">
+                        <label for="pwd">Password:</label>
+                        <input type="password" class="form-control" id="pwd" required="true">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-sm-offset-4 col-sm-5">
+                        <input type="submit" class="btn btn-success btn-sm" value="Add Questions">
+                      </div>
+                    </div>
+                  </form>
+                </div><!-- /col-lg-9 END SECTION MIDDLE -->
+              </div><!--/row -->
+          </section>
+      </section>
       
       <!--main content end-->
       <!--footer start-->
@@ -228,52 +232,6 @@
         //   $('#details').show();
         //   $('#view-test').hide();
         // }
-
-        // $(document).ready(function()
-        // {
-        //   $.ajax({
-        //     url:'getTests';
-        //     type:'get';
-        //     data:data;
-        //     success:function(message){
-              var table = document.getElementById('testsTable');
-              var message=5;
-              for(i=1;i<=message;i++)
-              {
-                //alert("hello");
-                var row = table.insertRow(i);
-                row.style.textAlign="center";
-                var sno = row.insertCell(0);
-                var testName = row.insertCell(1);
-                var forButtons = row.insertCell(2);
-                sno.innerHTML=i;
-                testName.innerHTML="andskjnkdnksdnkdsnkndskn";
-                sno.style.textAlign="center";
-                testName.style.textAlign="center";
-                var button1=document.createElement("button");
-                forButtons.appendChild(button1);
-                var button2=document.createElement("button");
-                forButtons.appendChild(button2);
-                button1.className="btn btn-primary btn-xs";
-                button1.innerHTML="View Questions";
-                
-                button1.onclick=function(){
-                  window.location="index.html"; //Link for test using JSON
-                }
-
-                button2.onclick=function(){
-                  window.location="index.html"; //Link for report using JSON
-                }
-
-                button2.className="btn btn-warning btn-xs";
-                button2.innerHTML="View Report";
-
-
-            }
-      //     }
-
-      //   });
-      // });
     </script>
   
 

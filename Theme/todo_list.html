@@ -62,22 +62,17 @@
                   <h5 class="centered">Marcel Newman</h5>
                     
                   <li class="mt">
-                      <a class="active" href="index.html" onclick="viewDetails">
+                      <a href="index.html" onclick="viewDetails">
                           <i class="fa fa-dashboard"></i>
                           <span>Home</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a class="active" href="javascript:;" >
                           <i class="fa fa-cogs"></i>
                           <span>Create Test</span>
                       </a>
-                      <ul class="sub">
-                          <li><a  href="calendar.html">Calendar</a></li>
-                          <li><a  href="gallery.html">Gallery</a></li>
-                          <li><a  href="todo_list.html">Todo List</a></li>
-                      </ul>
                   </li>
 
                   <li class="sub-menu">
@@ -97,17 +92,16 @@
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
-      <section id="allquestions">
         <!-- <h2>Question</h2> -->
-      <section id="main-content" name="1">
-          <section class="wrapper">
+      <section id="main-content">
+          <section class="wrapper site-min-height">
           	<!-- SORTABLE TO DO LIST -->
-			       <form>
-              <div class="row">
+			       <form id="form">
+              <div class="row" id="q1">
                   <div class="col-md-12">
                       <section class="task-panel tasks-widget">
 	                	<div class="panel-heading">
-                          <label><h4>Question</h4></label>
+                          <label><h4 id="question">Question1</h4></label>
 	                        <div class="form-group">
                               <div class="col-sm-12">
                                   <input type="text" class="form-control">
@@ -163,7 +157,7 @@
                               </div>
                               <div class=" add-task-row">
                                   <a class="btn btn-success btn-sm pull-left" onclick="add()">Add Question</a>
-                                  <a class="btn btn-danger btn-sm pull" id="remove" onclick="remove(this.id)">Delete Question</a>
+                                  <a class="btn btn-danger btn-sm pull" id="remove1" onclick="remove(this.id)">Delete Question</a>
                                   <!-- <a class="btn btn-default btn-sm pull-right" href="todo_list.html#">See All Tasks</a> -->
                               </div>
                           </div>
@@ -173,7 +167,6 @@
 			   </form>
 		</section><!--/wrapper -->
       </section><!-- /MAIN CONTENT -->
-        </section>
 
       <!--main content end-->
       <!--footer start-->
@@ -229,6 +222,7 @@
     countQuestions=1;
     maxQuestions=20;
     questionID=1;
+    var tobeCloned=$("#q1").clone();
     // $(document).ready(function(){
     //   alert("hello");
     // })
@@ -247,37 +241,39 @@
     //});
     function add()
     {
-        var clone =$("#main-content").clone();
+        var clone =tobeCloned.clone();
         countQuestions++;
-        questionID++;
-        // clone.find("h4").html('Q');
-        clone.attr('name',"q"+questionID);
-        clone.find("input:text").val("")
-        //alert(clone.attr('name'));
-        clone.find("#remove").attr("id",'remove'+questionID);
-        // alert(clone.find('#remove'+questionID).attr('id'));
-        clone.appendTo("#allquestions")
+        clone.attr('id',"q"+countQuestions);
+        clone.find("#question").html("Question"+countQuestions);
+        clone.find("#remove1").attr("id",'remove'+countQuestions);
+        clone.appendTo("#form")
     }
 
     function remove(id)
     {
-      var res = id.replace("remove", "");
-      $('section[name=q'+res+']').remove();
-      countQuestions--;
-    
-    }
-    
+      if(countQuestions>1)
+      {
+        var qNo = id.replace("remove", "");
+        $('#q'+qNo).remove();
+        //alert(qNo);
+        var i=qNo+1;
+        var updatedID=i-1;
+        for(i=qNo;i<=countQuestions;i++)
+        {
+          // var question=document.getElementById('q'+i);
+          var updatedID=i-1;
+          // alert("hello");
+          $('#q'+i).attr('id','q'+updatedID);
+          // //alert(question.attr('id'));
+          // //alert($('#q'+i-1).find("#question").html());
+          $('#q'+updatedID).find("#question").html("Question"+updatedID);
+          $('#q'+updatedID).find("#remove"+i).attr("id",'remove'+updatedID);
 
-    function enable(id)
-    {
-      document.getElementById(id).contentEditable=true;
-      return false;
-    }
-
-    function disable(id)
-    {
-      document.getElementById(id).contentEditable=false;
-      return false;
+        }
+        countQuestions--;
+      }
+      else
+        alert("Minimum 1 question");
     }
   </script>
 
