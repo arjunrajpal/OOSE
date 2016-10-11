@@ -1,0 +1,14 @@
+{
+  "name": "OTP",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./app"
+  },
+  "dependencies": {
+    "express": "^4.13.4",
+    "mongodb": "^2.2.10",
+    "mongoose": "^4.6.3",
+    "morgan": "^1.7.0"
+  }
+}
