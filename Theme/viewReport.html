@@ -108,7 +108,9 @@
                               <thead>
                               <tr>
                                   <th style="text-align: center;" >S.No</th>
-                                  <th style="text-align: center;" colspan="2">Test Name</th>
+                                  <th style="text-align: center;">Name</th>
+                                  <th style="text-align: center;">Email ID</th>
+                                  <th style="text-align: center;">Score</th>
                               </tr>
                               </thead>
                               <tbody>
@@ -242,33 +244,18 @@
               {
                 //alert("hello");
                 var row = table.insertRow(i);
-                row.style.textAlign="center";
                 var sno = row.insertCell(0);
-                var testName = row.insertCell(1);
-                var forButtons = row.insertCell(2);
+                var studentName = row.insertCell(1);
+                var emailID = row.insertCell(2);
+                var testScore = row.insertCell(3);
                 sno.innerHTML=i;
-                testName.innerHTML="andskjnkdnksdnkdsnkndskn";
+                studentName.innerHTML="ABC";
+                emailID.innerHTML="abc@xyz.com";
+                testScore.innerHTML="5";
                 sno.style.textAlign="center";
-                testName.style.textAlign="center";
-                var button1=document.createElement("button");
-                forButtons.appendChild(button1);
-                var button2=document.createElement("button");
-                forButtons.appendChild(button2);
-                button1.className="btn btn-primary btn-xs";
-                button1.innerHTML="View Questions";
-                
-                button1.onclick=function(){
-                  window.location="index.html"; //Link for test using JSON
-                }
-
-                button2.onclick=function(){
-                  window.location="viewReport.html"; //Link for report using JSON
-                }
-
-                button2.className="btn btn-warning btn-xs";
-                button2.innerHTML="View Report";
-
-
+                studentName.style.textAlign="center";
+                emailID.style.textAlign="center";
+                testScore.style.textAlign="center";
             }
       //     }
 
