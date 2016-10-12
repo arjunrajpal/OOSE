@@ -6,4 +6,5 @@ var KittenSchema = mongoose.Schema({
 })
 
 var Kitten = mongoose.model('Kitten', KittenSchema);
+
 module.exports = Kitten;
