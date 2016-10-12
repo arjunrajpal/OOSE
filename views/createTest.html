@@ -101,23 +101,26 @@
 
             <div class="row" id="details">
                 <div class="col-lg- main-chart">  
-                   <form class="form-vertical" action="todo_list.html">
+                   <form id="testDetails" class="form-vertical">
                       <div class="row">
                         <div class="form-group col-sm-offset-3 col-sm-5">
                           <label for="name">Test Name:</label>
                           <input type="text" class="form-control" id="name" required="true">
+                          <span id="forName"></span>
                         </div>
                       </div>
                     <div class="row">
                       <div class="form-group col-sm-offset-3 col-sm-5">
                         <label for="duration">Duration(Minutes)</label>
-                        <input type="number" class="form-control" id="duration" required="true">
+                        <input type="number" class="form-control" id="duration" required="true" min=1>
+                        <span id="forDuration"></span>
                       </div>
                     </div>
                     <div class="row">
                       <div class="form-group col-sm-offset-3 col-sm-5">
                         <label for="pwd">Password:</label>
-                        <input type="password" class="form-control" id="pwd" required="true">
+                        <input type="password" class="form-control" id="password" required="true">
+                        <span id="forPassword"></span>
                       </div>
                     </div>
                     <div class="row">
@@ -232,6 +235,48 @@
         //   $('#details').show();
         //   $('#view-test').hide();
         // }
+        $(document).ready(function(){
+            var flag=1;
+            var passwordValidation= /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+            
+            $('#testDetails').submit(function(e){
+              if(($('#name').val().length<5)||(typeof($('#name').val())!=typeof('string')))
+              {
+                $('#forName').html('Invalid:Should be string and of atleast 5 characters');
+                e.preventDefault();
+                flag=0;
+              }
+              else
+                flag=1;
+
+              if(!$('#password').val().match(passwordValidation))
+              {
+                $('#forPassword').html('Invalid:Password should between 8 to 15 characters containing at least one lowercase letter, one uppercase letter, one numeric digit, and one special character');
+                e.preventDefault();
+                flag=0;
+              }
+              else
+                flag=1;
+
+              if(flag)
+              {
+                  sessionStorage.setItem('name',$('#name').val());
+                  sessionStorage.setItem('password',$('#password').val());
+                  sessionStorage.setItem('duration',$('#duration').val());
+
+                  window.location="addQuestions.html";
+              }
+
+            });
+
+          // $.ajax({
+          //   url:'addQuestions.html',
+          //   type:'post',
+          //   data:'name='+$('#name').val()+'&duration='+$('#duration').val()+'&password='$('#password').val();
+          //   success:function(message){
+
+          //   }
+        });
     </script>
   
 

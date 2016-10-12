@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>DASHGUM - Bootstrap Admin Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    
+    <!-- Custom styles for this template -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/to-do.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+  <section id="container" >
+      <!-- **********************************************************************************************************************************************************
+      TOP BAR CONTENT & NOTIFICATIONS
+      *********************************************************************************************************************************************************** -->
+      <!--header start-->
+      <header class="header black-bg">
+              <div class="sidebar-toggle-box">
+                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+              </div>
+            <!--logo start-->
+            <a href="index.html" class="logo"><b>ONLINE TEST PORTAL</b></a>
+            <!--logo end-->
+            </div>
+            <div class="top-menu">
+              <ul class="nav pull-right top-menu">
+                    <li><a class="logout" style="background-color: blue" href="index.html" onclick="submit()">Create Test</a></li>
+                    <li><a class="logout" href="login.html">Logout</a></li>
+              </ul>
+            </div>
+      </header>      <!--header end-->
+      
+      <!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+              
+                  <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                  <h5 class="centered">Marcel Newman</h5>
+                    
+                  <li class="mt">
+                      <a href="index.html" onclick="viewDetails">
+                          <i class="fa fa-dashboard"></i>
+                          <span>Home</span>
+                      </a>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a class="active" href="javascript:;" >
+                          <i class="fa fa-cogs"></i>
+                          <span>Create Test</span>
+                      </a>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a href="viewTest.html">
+                          <i class="fa fa-desktop"></i>
+                          <span>View Tests</span>
+                      </a>
+                  </li>
+
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+      
+      <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+      <!--main content start-->
+        <!-- <h2>Question</h2> -->
+      <section id="main-content">
+          <section class="wrapper site-min-height">
+          	<!-- SORTABLE TO DO LIST -->
+			       <form id="form">
+              <div class="row" id="q1">
+                  <div class="col-md-12">
+                      <section class="task-panel tasks-widget">
+	                	<div class="panel-heading">
+                          <label><h4 id="question">Question1</h4></label>
+	                        <div class="form-group">
+                              <div class="col-sm-12">
+                                  <input type="text" class="form-control">
+                              </div>
+                          </div>
+	                 	</div>
+                          <div class="panel-body">
+                              <div class="task-content container-fluid">
+                                  <label><h4>Options</h4></label>
+                                  <ul id="sortable">
+                                      <div class="row">
+                                        <li class="list-primary">
+                                              <div class="col-sm-1">
+                                                  <input type="radio" style="float: left;"value="" name="addQuesRadio"  />
+                                              </div>
+                                              <div class="col-sm-8">
+                                                  <input type="text" class="form-control">
+                                              </div>
+                                      </li>
+                                      </div>
+                                      
+                                      <div class="row">
+                                        <li class="list-primary">
+                                              <div class="col-sm-1">
+                                                  <input type="radio" style="float: left;"value="" name="addQuesRadio"  />
+                                              </div>
+                                              <div class="col-sm-8">
+                                                  <input type="text" class="form-control">
+                                              </div>
+                                      </li>
+                                      </div>
+                                      <div class="row">
+                                        <li class="list-primary">
+                                              <div class="col-sm-1">
+                                                  <input type="radio" style="float: left;"value="" name="addQuesRadio"  />
+                                              </div>
+                                              <div class="col-sm-8">
+                                                  <input type="text" class="form-control">
+                                              </div>
+                                      </li>
+                                      </div>
+                                      <div class="row">
+                                        <li class="list-primary">
+                                              <div class="col-sm-1">
+                                                  <input type="radio" style="float: left;"value="" name="addQuesRadio"  />
+                                              </div>
+                                              <div class="col-sm-8">
+                                                  <input type="text" class="form-control">
+                                              </div>
+                                      </li>
+                                      </div>
+                                  </ul>
+                              </div>
+                              <div class=" add-task-row">
+                                  <a class="btn btn-success btn-sm pull-left" onclick="add()">Add Question</a>
+                                  <a class="btn btn-danger btn-sm pull" id="remove1" onclick="remove(this.id)">Delete Question</a>
+                                  <!-- <a class="btn btn-default btn-sm pull-right" href="todo_list.html#">See All Tasks</a> -->
+                              </div>
+                          </div>
+                      </section>
+                  </div><!--/col-md-12 -->
+              </div><!-- /row -->
+			   </form>
+		</section><!--/wrapper -->
+      </section><!-- /MAIN CONTENT -->
+
+      <!--main content end-->
+      <!--footer start-->
+      <footer class="site-footer">
+          <div class="text-center">
+              2016-OTP
+              <a href="todo_list.html#" class="go-top">
+                  <i class="fa fa-angle-up"></i>
+              </a>
+          </div>
+      </footer>
+      <!--footer end-->
+  </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+
+
+    <!--common script for all pages-->
+    <script src="assets/js/common-scripts.js"></script>
+
+    <!--script for this page-->
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>    
+    <script src="assets/js/tasks.js" type="text/javascript"></script>
+
+    <script>
+      // jQuery(document).ready(function() {
+      //     TaskList.initTaskWidget();
+      // });
+
+      // $(function() {
+      //     $( "#sortable" ).sortable();
+      //     $( "#sortable" ).disableSelection();
+      // });
+
+    </script>
+    
+    
+  <script>
+      //custom select box
+
+      // $(function(){
+      //     $('select.styled').customSelect();
+      // });
+
+  </script>
+
+  <script>
+    countQuestions=1;
+    maxQuestions=20;
+    questionID=1;
+    var tobeCloned=$("#q1").clone();
+    // $(document).ready(function(){
+    //   alert("hello");
+    // })
+    // $(document).ready(function(){
+      
+      //$('#remove').attr('id','remove'+countQuestions);
+      //alert($('#remove1').attr('id'));
+      //$('#remove')attr('id','remove'+id);
+
+    // $(".add").click(function(){
+
+    //     alert("hello");
+    //     $("#main-content").clone().appendTo("body");
+    // });
+    //$('#remove').attr('id','remove1');
+    //});
+    function add()
+    {
+        var clone =tobeCloned.clone();
+        countQuestions++;
+        clone.attr('id',"q"+countQuestions);
+        clone.find("#question").html("Question"+countQuestions);
+        clone.find("#remove1").attr("id",'remove'+countQuestions);
+        clone.appendTo("#form")
+    }
+
+    function remove(id)
+    {
+      if(countQuestions>1)
+      {
+        var qNo = id.replace("remove", "");
+        $('#q'+qNo).remove();
+        //alert(qNo);
+        var i=qNo+1;
+        var updatedID=i-1;
+        for(i=qNo;i<=countQuestions;i++)
+        {
+          // var question=document.getElementById('q'+i);
+          var updatedID=i-1;
+          // alert("hello");
+          $('#q'+i).attr('id','q'+updatedID);
+          // //alert(question.attr('id'));
+          // //alert($('#q'+i-1).find("#question").html());
+          $('#q'+updatedID).find("#question").html("Question"+updatedID);
+          $('#q'+updatedID).find("#remove"+i).attr("id",'remove'+updatedID);
+
+        }
+        countQuestions--;
+      }
+      else
+        alert("Minimum 1 question");
+    }
+  </script>
+
+  </body>
+</html>
