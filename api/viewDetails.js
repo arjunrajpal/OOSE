@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 function viewDetails(request,response)
 {
-	var examinerId = mongoose.Types.ObjectId(request.body.examinerId);
+	var examinerId = mongoose.Types.ObjectId(request.query.examinerId);
 
 	examiner.findById(examinerId,function(err,examinerDetails){
 		if(err){

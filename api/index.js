@@ -1,10 +1,30 @@
-var express = require('express')
+var express = require('express');
 
 var api=express.Router();
 
+var login=require('./login.js');
+var signUp=require('./signUp.js');
+var createTest=require('./createTest.js');
+var viewDetails=require('./viewDetails.js');
 var viewTest=require('./viewTest.js');
 var viewQuestions=require('./viewQuestions.js');
 var viewReport=require('./viewReport.js');
+
+api.post('/login',function(req,res){
+	login(req,res);
+});
+
+api.post('/signUp',function(req,res){
+	signUp(req,res);
+});
+
+api.post('/createTest',function(req,res){
+	createTest(req,res);
+});
+
+api.get('/viewDetails',function(req,res){
+	viewDetails(req,res);
+});
 
 api.get('/viewTest', function(req, res){
 	viewTest(req, res);

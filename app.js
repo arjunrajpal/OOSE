@@ -1,5 +1,7 @@
 var express=require('express');
 var logger=require('morgan');
+var bodyParser=require('body-parser');
+
 console.log('hello');
 
 //App Requirements
@@ -10,13 +12,15 @@ app.set('port', port);
 
 app.use(logger('dev'));
 
+app.use(bodyParser.urlencoded({extended:false});
+    
 var server = require("http").createServer(app);
 
 console.log('server Started')
 
 //Database
 var mongoose = require('mongoose');
-mongoose.Promise = global.Promise
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/test');
 
 //API Routing
