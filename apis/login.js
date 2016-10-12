@@ -1,4 +1,4 @@
-var examiner = require('examiner');
+var examiner = require('./examiner');
 
 function login(request,response))
 {
@@ -10,6 +10,8 @@ function login(request,response))
 		var isMatch=e.checkPassword(password,done);
 		if(isMatch)
 			return e;
-	})
+	});
 
 }
+
+exports.module=login();

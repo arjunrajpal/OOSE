@@ -1,4 +1,4 @@
-var test = require('test');
+var test = require('./test');
 
 function storeTest(request,response)
 {
@@ -22,3 +22,5 @@ function storeTest(request,response)
 			return handleError(err);
 	});
 }
+
+module.exports = storeTest();
