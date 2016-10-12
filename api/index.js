@@ -10,6 +10,7 @@ var viewTest=require('./viewTest.js');
 var viewQuestions=require('./viewQuestions.js');
 var viewReport=require('./viewReport.js');
 var submitTest=require('./submitTest.js');
+var loginTest=require('./loginTest.js')
 
 api.post('/login',function(req,res){
 	login(req,res);
@@ -41,4 +42,8 @@ api.get('/viewReport', function(req, res){
 
 api.post('/submitTest', function(req. res){
 	submitTest(req, res);
+})
+
+api.post('/loginTest', function(req, res){
+	loginTest(req, res);
 })
