@@ -7,14 +7,6 @@ var mongoose=require('mongoose');
 //User: name, email, score
 //Post Request
 
-function existsEmail(examineeEmail, examineeArray){
-
-	for (examinee in examineeArray){
-		if(examinee['email']==examineeEmail)
-			return false
-	}
-	return true
-}
 
 module.exports = function(req, res){
 
@@ -25,11 +17,6 @@ module.exports = function(req, res){
 		if(err){
 			console.log('Test ID:' + testId +':\n'+err);
 			res.json({'error':err});
-		}
-
-		else if(!existsEmail(req.body.email, test.examinee)){
-			console.log('User already registered');
-			res.json({'error':'User already Registered'});
 		}
 
 		Test.findOneAndUpdate({_id:req.body.testId},{
