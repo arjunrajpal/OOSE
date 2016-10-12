@@ -7,9 +7,16 @@ function login(request,response)
 
 	var examiner = examiner;
 	examiner.find({'email':email},function(err,e){
-		var isMatch=e.checkPassword(password,done);
-		if(isMatch)
-			return response.json(e);
+		if(err||!e){
+			console.log('User with this email id does not exists');
+			res.json({'error':'The Specified Email id does not exists'});
+		}
+		e.checkPassword(password,function(err,isMatch){
+			if(err||!isMatch){
+				console.log('Password not a match');
+				res.json({'error':'The Password is incorrect'});
+			}
+		response.json(e);
 	});
 
 }

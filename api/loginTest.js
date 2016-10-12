@@ -8,9 +8,9 @@ function existsEmail(examineeEmail, examineeArray){
 
 	for (examinee in examineeArray){
 		if(examinee.email==examineeEmail)
-			return false
+			return false;
 	}
-	return true
+	return true;
 }
 
 module.exports = function(req, res){
