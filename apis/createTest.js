@@ -20,6 +20,7 @@ function storeTest(request,response)
 	{
 		if(err)
 			return handleError(err);
+		response.statusCode(200);
 	});
 }
 

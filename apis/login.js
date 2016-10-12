@@ -14,4 +14,4 @@ function login(request,response)
 
 }
 
-exports.module=login();
+module.exports=login();
