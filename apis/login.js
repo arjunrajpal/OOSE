@@ -1,6 +1,6 @@
-var examiner = require('./examiner');
+var examiner = require('../models/examiner');
 
-function login(request,response))
+function login(request,response)
 {
 	var email = request.query.email;
 	var password = request.query.password;

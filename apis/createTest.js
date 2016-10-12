@@ -1,4 +1,4 @@
-var test = require('./test');
+var test = require('../models/test');
 
 function storeTest(request,response)
 {
