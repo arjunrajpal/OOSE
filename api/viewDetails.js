@@ -1,4 +1,4 @@
-var examiner = require('../models/examiner');
+var examiner = require('../models/Examiner.js');
 var mongoose = require('mongoose');
 
 function viewDetails(request,response)

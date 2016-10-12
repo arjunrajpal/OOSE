@@ -1,4 +1,4 @@
-var test = require('../models/test');
+var test = require('../models/Test.js');
 var mongoose = require('mongoose');
 
 function existsTestName(name,testArray){

@@ -1,4 +1,4 @@
-var examiner = require('../models/examiner');
+var examiner = require('../models/Examiner.js');
 
 function signUp(request,reponse)
 {
