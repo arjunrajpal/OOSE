@@ -15,7 +15,9 @@ function existsEmail(examineeEmail, examineeArray){
 
 module.exports = function(req, res){
 
-	Test.findById(req.body.testId, function(err, test){
+	var testId = mongoose.Types.ObjectId(req.body.testId);
+
+	Test.findById(testId, function(err, test){
 		if(err||!test){
 			console.log('Could Not find the registered Test')
 			res.json({'error':'The Specified Test does not exist'})
