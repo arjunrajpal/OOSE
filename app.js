@@ -19,38 +19,10 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise
 mongoose.connect('mongodb://localhost:27017/test');
 
-// var Schema=mongoose.Schema;
-// var db = mongoose.connection;
-// db.on('error',console.error.bind(console,'connection error:'));
-// db.once('open',function()
-// {
-// 	var kittySchema=new Schema({
-// 		name:String
-// 	});
+//API Routing
 
-// 	var Kitten=mongoose.model('Kitten',kittySchema);
-
-// 	var silence=new Kitten({name:'arjun'});
-
-// 	silence.save(function(err,silence){
-// 		if(err)
-// 			return console.error(err);
-
-// 	});
-// });
-
-var Kitten = require('./models/Kitten.js')
-
-var arjun=new Kitten({name:'Arjun'});
-arjun.save(function(err){
-    if (err) {
-        console.log(err);
-    }
-    else{
-        console.log("Saved Kitten");
-        console.log(arjun);
-    }
-})
+var api=require('./api')
+app.use('/api', api)
 
 function normalizePort(val) {
     var port = parseInt(val, 10);
