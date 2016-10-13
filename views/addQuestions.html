@@ -101,7 +101,7 @@
                   <div class="col-md-12">
                       <section class="task-panel tasks-widget">
 	                	<div class="panel-heading">
-                          <label><h4 id="question">Question1</h4></label>
+                          <label><h4 id="question">Question 1</h4></label>
 	                        <div class="form-group">
                               <div class="col-sm-12">
                                   <input type="text" class="form-control">
@@ -244,7 +244,7 @@
         var clone =tobeCloned.clone();
         countQuestions++;
         clone.attr('id',"q"+countQuestions);
-        clone.find("#question").html("Question"+countQuestions);
+        clone.find("#question").html("Question "+countQuestions);
         clone.find("#remove1").attr("id",'remove'+countQuestions);
         clone.appendTo("#form")
     }
@@ -266,14 +266,14 @@
           $('#q'+i).attr('id','q'+updatedID);
           // //alert(question.attr('id'));
           // //alert($('#q'+i-1).find("#question").html());
-          $('#q'+updatedID).find("#question").html("Question"+updatedID);
+          $('#q'+updatedID).find("#question").html("Question "+updatedID);
           $('#q'+updatedID).find("#remove"+i).attr("id",'remove'+updatedID);
 
         }
         countQuestions--;
       }
       else
-        alert("Minimum 1 question");
+        alert("Minimum 1 Question");
     }
   </script>
 
