@@ -167,7 +167,7 @@
 			   </form>
 
          <!-- Modal for displaying message -->
-         <div class="modal fade" id="myModal" role="dialog" style="visibility: hidden;">
+         <div class="modal fade" id="myModal" role="dialog">
           <div class="modal-dialog">
     
             <!-- Modal content-->
@@ -320,15 +320,17 @@
               var option2=$('#q'+i).find("#option2").val();
               var option3=$('#q'+i).find("#option3").val();
               var option4=$('#q'+i).find("#option4").val();
-              //var correct=$('input[name=addQuesRadio]:checked', '#questionDetails').val();
-              var correct=1;
+              var correct=$('input[name=addQuesRadio]:checked', '#questionDetails').val();
+              //var correct=1;
 
-              var question={qString:qString,option1:option1,option2:option2,option3:option3,option4:option4,correct:correct};
+              var question={qString:qString,option1:option1.toString(),option2:option2.toString(),option3:option3.toString(),option4:option4.toString(),correct:correct.toString()};
 
               questions.push(question);
             }
 
             var testData={examinerId:sessionStorage.getItem('examinerID'),name:sessionStorage.getItem('testName'),duration:sessionStorage.getItem('duration'),password:sessionStorage.getItem('password'),questions:questions};
+
+            window.console.log(questions);
 
             $.ajax({
                 url:'http://localhost:3000/api/createTest',
@@ -339,16 +341,15 @@
                     {
                       $('#messageHeader').html("Error");
                       $('#message').html(message.error);
-                      $('#myModal').style.visibility='visible';
-                      $('#myModal').show();
+                      $('#myModal').modal('show');
                     }
                     else
                     {
                       $('#messageHeader').html("Success");
                       $('#message').html(message.success);
-                      $('#myModal').style.visibility='visible';
-                      $('#myModal').show();
-                      //window.location="index.html";
+                      $('#myModal').bind('hide',function(){
+                          window.location="index.html";
+                      });
                     } 
                 }
 

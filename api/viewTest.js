@@ -7,7 +7,7 @@ module.exports = function(req, res){
 
 	var examinerId=mongoose.Types.ObjectId(req.query.examinerId);
 
-	Test.find({examinerId: examinerId}, '_id name', function(err, tests){
+	Test.find({examinerId: examinerId}, function(err, tests){
 
 		if(err){
 			console.log('User ID:' +examinerId+':\n'+err);
