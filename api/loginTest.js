@@ -36,7 +36,7 @@ module.exports = function(req, res){
 				res.json({'error':'User already Registered'});
 			}
 			//Ready to Login
-			res.json({'success'});
+			res.json({'success':'200'});
 		})
 	})
 };

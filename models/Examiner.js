@@ -14,6 +14,9 @@ var examinerSchema = mongoose.Schema({
     institution:{type:String}
 });
 
+// No Operation Function to use with bcrypt
+var noop = function () {
+};
 
 // Hash the password before saving
 examinerSchema.pre("save", function (done) {

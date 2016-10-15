@@ -11,7 +11,7 @@ function existsTestName(name,testArray){
 	return false;
 }
 
-function storeTest(request,response)
+module.exports = function storeTest(request,response)
 {
 	var examinerID = mongoose.Types.ObjectId(request.body.examinerID);
  	var name = request.body.name;
@@ -39,5 +39,3 @@ function storeTest(request,response)
 		});
 	});
 }
-
-module.exports = storeTest();

@@ -1,24 +1,23 @@
 var examiner = require('../models/Examiner.js');
 
-function login(request,response)
+module.exports = function(request,response)
 {
 	var email = request.body.email;
 	var password = request.body.password;
 
-	var examiner = examiner;
-	examiner.find({'email':email},function(err,e){
-		if(err||!e){
+	examiner.findOne({'email':email},function(err,user){
+		if(err||!user){
 			console.log('User with this email id does not exists');
-			res.json({'error':'The Specified Email id does not exists'});
+			response.json({'error':'The Specified Email id does not exists'});
+			return;
 		}
-		e.checkPassword(password,function(err,isMatch){
+		user.checkPassword(password,function(err,isMatch){
 			if(err||!isMatch){
 				console.log('Password not a match');
-				res.json({'error':'The Password is incorrect'});
+				response.json({'error':'The Password is incorrect'});
+				return;
 			}
-		response.json(e);
+			response.json(user);
+		});
 	});
-
 }
-
-module.exports = login();

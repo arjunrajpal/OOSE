@@ -44,13 +44,13 @@
             <!--logo start-->
             <a href="index.html" class="logo"><b>ONLINE TEST PORTAL</b></a>
             <!--logo end-->
-            </div>
+            
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
                     <li><a class="logout" href="login.html">Logout</a></li>
             	</ul>
             </div>
-        </header>
+      </header>
       <!--header end-->
       
       <!-- **********************************************************************************************************************************************************
@@ -63,7 +63,7 @@
               <ul class="sidebar-menu" id="nav-accordion">
               
               	  <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered">Marcel Newman</h5>
+              	  <h5 id="ExaminerName" class="centered">Marcel Newman</h5>
               	  	
                   <li class="mt">
                       <a class="active" href="index.html" onclick="viewDetails">
@@ -193,6 +193,37 @@
 	</script> -->
 	
 	<script type="application/javascript">
+
+        //Function to be called on load to check for Examiner
+        //These functions Also Fill the Table With Data
+        if(sessionStorage.getItem('examinerID')==null){
+            window.location='homePage.html'
+        }
+        else{
+            $('#ExaminerName').html(sessionStorage.getItem('examinerName'));
+            getDetails();
+
+        }
+
+        function getDetails(){
+            $.ajax({
+                url:'http://localhost:3000/api/viewDetails',
+                type:'GET',
+                data:{examinerId:sessionStorage.getItem('examinerID')},
+                error:function(){
+//                    window.location='homePage.html'
+                    console.log('Error');
+                },
+                success:function(user){
+                    $('#email').val(user.email);
+                    $('#name').val(user.name);
+                    $('#pwd').val(user.password);
+                    $('#institutionname').val(user.institution);
+                    $('#phoneno').val(user.phoneNo);
+                }
+            })
+        }
+
         // $(document).ready(function () {
         //     $("#date-popover").popover({html: true, trigger: "manual"});
         //     $("#date-popover").hide();
