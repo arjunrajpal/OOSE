@@ -19,6 +19,7 @@ module.exports = function storeTest(request,response)
 	var questions = request.body.questions;
 	var duration = request.body.duration;
 
+	console.log(questions);
 	test.find({examinerId:examinerId},'name',function(err,tests){
 		/*if(existsTestName(name,tests)){
 			console.log('Test with same name already exists');
@@ -32,10 +33,10 @@ module.exports = function storeTest(request,response)
 			duration:duration
 		});
 
-		testData.save(function(err){
+		testData.save(function(err, test){
 			if(err)
 				response.json({'error':err});
-			response.json({'success':'Test added successfully'});
+			response.json(test);
 		});
 	});
 }

@@ -324,19 +324,21 @@
               //var correct=1;
 
               var question={qString:qString,option1:option1.toString(),option2:option2.toString(),option3:option3.toString(),option4:option4.toString(),correct:correct.toString()};
-
               questions.push(question);
-            }
-
+          }
+          window.console.log(questions);
             var testData={examinerId:sessionStorage.getItem('examinerID'),name:sessionStorage.getItem('testName'),duration:sessionStorage.getItem('duration'),password:sessionStorage.getItem('password'),questions:questions};
-
-            window.console.log(questions);
+            window.console.log(testData);
 
             $.ajax({
                 url:'http://localhost:3000/api/createTest',
                 type:'post',
-                data:testData,
+                data:JSON.stringify(testData),
+                contentType:'application/json',
+                dataType:'json',
                 success:function(message){
+                    alert('Success');
+                    window.console.log(message);
                     if(message.hasOwnProperty('error'))
                     {
                       $('#messageHeader').html("Error");
