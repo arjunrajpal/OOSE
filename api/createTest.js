@@ -35,7 +35,7 @@ module.exports = function storeTest(request,response)
 		testData.save(function(err){
 			if(err)
 				response.json({'error':err});
-			response.json({'success':200});
+			response.json({'success':'Test added successfully'});
 		});
 	});
 }

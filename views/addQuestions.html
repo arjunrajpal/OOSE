@@ -339,12 +339,14 @@
                     {
                       $('#messageHeader').html("Error");
                       $('#message').html(message.error);
+                      $('#myModal').style.visibility='visible';
                       $('#myModal').show();
                     }
                     else
                     {
                       $('#messageHeader').html("Success");
                       $('#message').html(message.success);
+                      $('#myModal').style.visibility='visible';
                       $('#myModal').show();
                       //window.location="index.html";
                     } 
