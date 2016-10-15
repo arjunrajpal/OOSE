@@ -364,6 +364,30 @@
                 return false;
               }
 		}
+
+		function validateUser(){
+
+			var userData={email:$('#email').val(), password:$('#password').val()};
+			$.ajax({
+				type:'POST',
+				url:'http://localhost:3000/api/login',
+				data:userData,
+				error:function(){
+					$(forPassword).html('Some Unknown Error Occured');
+				},
+				success: function(data){
+					var json=JSON.parse(data);
+					if(json.has('error')){
+						$('#forPassword').html(json.error);
+					}
+					else{
+						$('#forPassword').html('Success');
+						window.location='index.html';
+					}
+				}
+			})
+		}
+
 	</script>
 </body>
 

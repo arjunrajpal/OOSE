@@ -1,6 +1,6 @@
 var examiner = require('../models/Examiner.js');
 
-module.exports = function signUp(request,reponse)
+module.exports = function signUp(request,response)
 {
 	var name = request.body.name;
 	var password = request.body.password;
@@ -16,9 +16,12 @@ module.exports = function signUp(request,reponse)
 		institution:institution
 	});
 
-	examinerData.save(function(err){
-		if(err)
-			response.json({'error':err});
-		response.statusCode(200);
+	examinerData.save(function(err, user){
+		if(err) {
+			response.json({'error': err});
+			return;
+		}
+		response.json({'success':200, 'user':user})
+		return;
 	});
 }
