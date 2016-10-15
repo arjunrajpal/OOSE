@@ -40,10 +40,12 @@ api.get('/viewReport', function(req, res){
 	viewReport(req, res);
 });
 
-api.post('/submitTest', function(req. res){
+api.post('/submitTest', function(req, res){
 	submitTest(req, res);
 })
 
 api.post('/loginTest', function(req, res){
 	loginTest(req, res);
 })
+
+module.exports = api;

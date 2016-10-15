@@ -1,6 +1,6 @@
 var examiner = require('../models/Examiner.js');
 
-function signUp(request,reponse)
+module.exports = function signUp(request,reponse)
 {
 	var name = request.body.name;
 	var password = request.body.password;
@@ -22,5 +22,3 @@ function signUp(request,reponse)
 		response.statusCode(200);
 	});
 }
-
-module.exports = signUp();

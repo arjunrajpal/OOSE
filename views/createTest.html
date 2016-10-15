@@ -246,8 +246,9 @@
                 e.preventDefault();
                 flag=0;
               }
-              else
-                flag=1;
+              else{
+                $('#forName').html('');
+              }
 
               if(!$('#password').val().match(passwordValidation))
               {
@@ -255,16 +256,21 @@
                 e.preventDefault();
                 flag=0;
               }
-              else
-                flag=1;
+              else{
+                $('#forPassword').html('');
+              }
 
               if(flag)
               {
                   sessionStorage.setItem('name',$('#name').val());
                   sessionStorage.setItem('password',$('#password').val());
                   sessionStorage.setItem('duration',$('#duration').val());
-
+                  e.preventDefault()
                   window.location="addQuestions.html";
+              }
+              else{
+                e.preventDefault();
+                flag=1;
               }
 
             });

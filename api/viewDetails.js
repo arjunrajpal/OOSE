@@ -1,7 +1,9 @@
 var examiner = require('../models/Examiner.js');
 var mongoose = require('mongoose');
 
-function viewDetails(request,response)
+
+
+module.exports = function viewDetails(request,response)
 {
 	var examinerId = mongoose.Types.ObjectId(request.query.examinerId);
 
@@ -13,5 +15,3 @@ function viewDetails(request,response)
 		response.json(examinerDetails);
 	});
 }
-
-module.exports = viewDetails();
