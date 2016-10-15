@@ -5,12 +5,12 @@ var mongoose=require('mongoose')
 //Requires examinerId in the Query
 module.exports = function(req, res){
 
-	var examinerId=mongoose.Types.ObjectId(req.query.examinerId);
+	var examinerID=mongoose.Types.ObjectId(req.query.examinerID);
 
-	Test.find({examinerId: examinerID}, '_id name', function(err, tests){
+	Test.find({examinerID: examinerID}, '_id name', function(err, tests){
 
 		if(err){
-			console.log('User ID:' +examinerId+':\n'+err);
+			console.log('User ID:' +examinerID+':\n'+err);
 			res.json({'error':err});
 		}
 

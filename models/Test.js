@@ -6,7 +6,7 @@ var examiner = require('./Examiner.js');
 //Schema
 var testSchema = mongoose.Schema({
 	name:String,
-	examinerID:{type:Schema.Types.ObjectId, ref:'examiner', required:true},
+	examinerId:{type:Schema.Types.ObjectId, ref:'examiner', required:true},
 	questions:[{qString:String,option1:String,option2:String,option3:String,option4:String,correct:String}],
 	password:{type:String, required:true},
 	questions:[{qString:String,option1:String,option2:String,option3:String,option4:String,correct:Number}],

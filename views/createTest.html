@@ -104,9 +104,9 @@
                    <form id="testDetails" class="form-vertical">
                       <div class="row">
                         <div class="form-group col-sm-offset-3 col-sm-5">
-                          <label for="name">Test Name:</label>
-                          <input type="text" class="form-control" id="name" required="true">
-                          <span id="forName"></span>
+                          <label for="testName">Test Name:</label>
+                          <input type="text" class="form-control" id="testName" required="true">
+                          <span id="fortestName"></span>
                         </div>
                       </div>
                     <div class="row">
@@ -230,32 +230,20 @@
         //     console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         // }
 
-        // $('#view-test').hide();
-
-        // function viewTests()
-        // {
-        //   $('#details').hide();
-        //   $('#view-test').show();
-        // }
-
-        // function viewDetails()
-        // {
-        //   $('#details').show();
-        //   $('#view-test').hide();
-        // }
+        
         $(document).ready(function(){
             var flag=1;
             var passwordValidation= /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
             
             $('#testDetails').submit(function(e){
-              if(($('#name').val().length<5)||(typeof($('#name').val())!=typeof('string')))
+              if(($('#testName').val().length<5)||(typeof($('#testName').val())!=typeof('string')))
               {
-                $('#forName').html('Invalid:Should be string and of atleast 5 characters');
+                $('#fortestName').html('Invalid:Should be string and of atleast 5 characters');
                 e.preventDefault();
                 flag=0;
               }
               else{
-                $('#forName').html('');
+                $('#fortestName').html('');
               }
 
               if(!$('#password').val().match(passwordValidation))
@@ -270,10 +258,10 @@
 
               if(flag)
               {
-                  sessionStorage.setItem('name',$('#name').val());
+                  sessionStorage.setItem('testName',$('#testName').val());
                   sessionStorage.setItem('password',$('#password').val());
                   sessionStorage.setItem('duration',$('#duration').val());
-                  e.preventDefault()
+                  e.preventDefault();
                   window.location="addQuestions.html";
               }
               else{
