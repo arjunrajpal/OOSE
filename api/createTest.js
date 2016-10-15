@@ -35,7 +35,7 @@ function storeTest(request,response)
 		testData.save(function(err){
 			if(err)
 				response.json({'error':err});
-			response.statusCode(200);
+			response.json({'success':200});
 		});
 	});
 }
