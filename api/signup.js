@@ -21,7 +21,7 @@ module.exports = function signUp(request,response)
 			response.json({'error': err});
 			return;
 		}
-		response.json({'success':200, 'user':user})
+		response.json(user);
 		return;
 	});
 }

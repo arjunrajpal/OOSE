@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>OTP-Sign Up</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        
+    <!-- Custom styles for this template -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+      <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+
+	  <div id="login-page">
+	  	<div class="container">
+	  	
+		      <form class="form-login" onsubmit="return signUp()">
+		        <h2 class="form-login-heading">sign up now</h2>
+		        <div class="login-wrap">
+		            <input type="text" id="name" class="form-control" placeholder="Name" required="true" autofocus>
+		            <br>
+		            <input type="email" id="email" class="form-control" placeholder="E-Mail" required="true" autofocus>
+		            <span id="forEmail"></span>
+		            <br>
+		            <input type="password" id="password" class="form-control" required="true" placeholder="Password">
+		            <span id="forPassword"></span>
+		            <br>
+		            <input type="number" id="phoneNo" class="form-control" placeholder="Phone Number" required="true" autofocus>
+		            <br>
+		            <input type="text" id="institution" class="form-control" placeholder="Institution" autofocus>
+		            <br>
+		            <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> SIGN UP</button>
+		            <hr>
+		            <label class="checkbox">
+		                <span class="pull-right">
+		                    <a data-toggle="modal" href="./homePage.html"> Already a Member?</a>
+		                </span>
+		                <span id="error"></span>
+		            </label>
+		
+		        </div>
+		
+		      </form>	  	
+	  	
+	  	</div>
+	  </div>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!--BACKSTRETCH-->
+    <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+    <script type="text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
+    <script>
+        $.backstretch("assets/img/login-bg.jpg", {speed: 500});
+
+        function signUp(){
+        	console.log('Hi')
+        	var flag=1;
+            var passwordValidation= /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+
+              if(($('#email').val().length<5)||(typeof($('#email').val())!=typeof('string')))
+              {
+                $('#forEmail').html('Invalid:Should be string and of atleast 5 characters');
+                // e.preventDefault();
+                flag=0;
+              }
+              else{
+                $('#forEmail').html('');
+              }
+
+             if(!$('#password').val().match(passwordValidation))
+             {
+               $('#forPassword').html('Invalid:Password should between 8 to 15 characters containing at least one lowercase letter, one uppercase letter, one numeric digit, and one special character');
+               // e.preventDefault();
+               flag=0;
+             }
+             else{
+               $('#error').html('');
+             }
+
+              if(flag)
+              {
+                  // e.preventDefault()
+				  registerUser();
+                  $('#error').html('Success');
+                 // window.location="index.html";
+                  return false;
+              }
+              else{
+                // e.preventDefault();
+                flag=1;
+                return false;
+              }
+        }
+
+        function registerUser(){
+        	var userData={'email':$('#email').val(), 'password':$('#password').val(), 'name':$('#name').val(), 'phoneNo':$('#phoneNo').val(), 'institution':$('#institution').val()};
+			$.ajax({
+				type:'POST',
+				url:'http://localhost:3000/api/signUp',
+				data:userData,
+				error:function(){
+					$('#error').html('Some Unknown Error Occurred');
+				},
+				success: function(data){
+					if(data.hasOwnProperty('error')){
+						$('#forPassword').html(data.error);
+					}
+					else{
+						$('#error').html('Success in Sign Up');
+						sessionStorage.setItem('examinerID',data._id);
+						sessionStorage.setItem('examinerName', data.name);
+						window.location='index.html';
+					}
+				}
+			})
+        }
+    </script>
+
+
+  </body>
+</html>

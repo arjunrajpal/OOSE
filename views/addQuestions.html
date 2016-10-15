@@ -59,7 +59,7 @@
               <ul class="sidebar-menu" id="nav-accordion">
               
                   <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-                  <h5 class="centered">Marcel Newman</h5>
+                  <h5 class="centered" id="ExaminerName"></h5>
                     
                   <li class="mt">
                       <a href="index.html" onclick="viewDetails">
@@ -240,6 +240,14 @@
   </script>
 
   <script>
+
+      if(sessionStorage.getItem('examinerID')==null){
+          window.location='homePage.html'
+      }
+      else{
+          $('#ExaminerName').html(sessionStorage.getItem('examinerName'));
+
+      }
     countQuestions=1;
     maxQuestions=20;
     questionID=1;
