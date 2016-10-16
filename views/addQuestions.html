@@ -313,7 +313,7 @@
               var option3=$('#q'+i).find("#option3").val();
               var option4=$('#q'+i).find("#option4").val();
               var correct=$('input[name=addQuesRadio'+i+']:checked', '#questionDetails').val();
-              correct=$('#q'+i).find("#option"+correct).val();
+//              correct=$('#q'+i).find("#option"+correct).val();
               var question={qString:qString,option1:option1.toString(),option2:option2.toString(),option3:option3.toString(),option4:option4.toString(),correct:correct.toString()};
               questions.push(question);
           }
