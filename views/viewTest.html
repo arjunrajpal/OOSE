@@ -236,25 +236,25 @@
         //   $('#view-test').hide();
         // }
 
-        // $(document).ready(function()
-        // {
-        //   $.ajax({
-        //     url:'getTests';
-        //     type:'get';
-        //     data:data;
-        //     success:function(message){
+        $(document).ready(function()
+        {
+          $.ajax({
+            url:'http://localhost:3000/api/viewTest',
+            type:'get',
+            data:'examinerId='+sessionStorage.getItem('examinerID'),
+            success:function(message){
               var table = document.getElementById('testsTable');
-              var message=5;
-              for(i=1;i<=message;i++)
+              var noOfTests=message.length;
+              for(i=0;i<message.length;i++)
               {
                 //alert("hello");
-                var row = table.insertRow(i);
+                var row = table.insertRow(i+1);
                 row.style.textAlign="center";
                 var sno = row.insertCell(0);
                 var testName = row.insertCell(1);
                 var forButtons = row.insertCell(2);
-                sno.innerHTML=i;
-                testName.innerHTML="andskjnkdnksdnkdsnkndskn";
+                sno.innerHTML=i+1;
+                testName.innerHTML=message[i].name;
                 sno.style.textAlign="center";
                 testName.style.textAlign="center";
                 var button1=document.createElement("button");
@@ -265,7 +265,7 @@
                 button1.innerHTML="View Questions";
                 
                 button1.onclick=function(){
-                  window.location="index.html"; //Link for test using JSON
+                  window.location="viewQuestions.html?testId="+message[i]._id; //Link for test using JSON
                 }
 
                 button2.onclick=function(){
@@ -277,10 +277,10 @@
 
 
             }
-      //     }
+          }
 
-      //   });
-      // });
+        });
+      });
     </script>
   
 
