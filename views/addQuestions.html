@@ -180,7 +180,7 @@
                 <p id="message"></p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id="modalClose" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
             </div>
       
@@ -302,9 +302,9 @@
       $(document).ready(function()
       {
         $('#forSubmit').click(function(e){
-          alert("hello");
+          //alert("hello");
           var questions=[];
-          alert("hello2");
+          //alert("hello2");
           for(var i=1;i<=countQuestions;i++)
             {
               var qString=$('#q'+i).find("#qString").val();
@@ -338,8 +338,22 @@
                     else
                     {
                       $('#messageHeader').html("Success");
-                      $('#message').html(message.success);
-                      $('#myModal').bind('hide',function(){
+                      $('#message').html("Test created successfully");
+                      // $('#myModal').bind('hide',function(){
+                      //     window.location="index.html";
+                      // });
+                      $('#myModal').modal('show');
+                      // $(".close").click(function () {
+                      //     window.location = "index.html";
+                      // });
+                      // $("#modalClose").click(function () {
+                      //     window.location = "index.html";
+                      // });
+                      // $('#myModal').close(function(){
+                      //   window.location="index.html";
+                      // })
+                      $("#myModal").on("hidden.bs.modal", function () {
+                     // put your default event here
                           window.location="index.html";
                       });
                     } 
