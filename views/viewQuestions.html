@@ -98,10 +98,10 @@
               <div class="col-md-12" id="column">
                 <div class="white-panel pn" id="q1">
                       <div class="panel-heading">
-                          <div class="pull-left"><h4 id="questionString"></h4></div>
+                          <div class="pull-left"><h4 style="color: black" id="questionString"></h4></div>
                       </div>
                       <div class="custom-check goleft mt">
-                        <table id="todo" class="table table-hover custom-check">
+                        <table id="todo" class="table table-hover custom-check" style="color: darkgray">
                           <tbody>
                             <tr>
                               <td>
@@ -167,6 +167,8 @@
   <script>
       //custom select box
 
+      var q1Clone= $('#q1').clone();
+
       function getParameterByName(name, url) {
         if (!url) url = window.location.href;
         name = name.replace(/[\[\]]/g, "\\$&");
@@ -197,7 +199,7 @@
       function populateQuestionsTable(questions){
           var numberOfQuestions = questions.length;
           var i=1;
-          var clone= $('#q1').clone();
+
 
           $('#q1').find('#questionString').html('Q'+i+':  ' + questions[i-1].qString);
           $('#q1').find('#option1').html(questions[i-1].option1);
@@ -205,16 +207,19 @@
           $('#q1').find('#option3').html(questions[i-1].option3);
           $('#q1').find('#option4').html(questions[i-1].option4);
           $('#q1').find("input[value="+questions[i-1].correct+"]").attr("checked","true");
+          $('#q1').find("input[name=option]").attr("name","optionq"+i);
 
           for(i=2; i<=numberOfQuestions;i++){
-              var clone = clone.clone();
+              var clone = q1Clone.clone();
               clone.attr('id','q'+i);
               clone.find('#questionString').html('Q'+i+' ' + questions[i-1].qString);
+              clone.find("input[value="+questions[i-1].correct+"]").attr("checked","true");
+              clone.find("input[name=option]").attr("name","optionq"+i);
               clone.find('#option1').html(questions[i-1].option1);
               clone.find('#option2').html(questions[i-1].option2);
               clone.find('#option3').html(questions[i-1].option3);
               clone.find('#option4').html(questions[i-1].option4);
-              clone.find("input[value="+questions[i-1].correct+"]").attr("checked","true");
+
               clone.appendTo('#column');
           }
       }
