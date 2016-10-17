@@ -12,9 +12,10 @@ module.exports = function(req, res){
 		if(err){
 			console.log('User ID:' +examinerId+':\n'+err);
 			res.json({'error':err});
+			return;
 		}
 
 		return res.json(tests);
 	})
 
-}
+};

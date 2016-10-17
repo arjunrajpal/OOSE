@@ -19,14 +19,16 @@ module.exports = function(req, res){
 
 	Test.findById(testId, function(err, test){
 		if(err||!test){
-			console.log('Could Not find the registered Test')
-			res.json({'error':'The Specified Test does not exist'})
+			console.log('Could Not find the registered Test');
+			res.json({'error':'The Specified Test does not exist'});
+			return;
 		}
 		//Now the test Exists
 		test.checkPassword(req.body.testPassword, function(err, isMatch){
 			if(err|| !isMatch){
 				console.log('Password not a match');
 				res.json({'error':'The Password is incorrect'});
+				return;
 			}
 			//Now Passord has matched
 
@@ -34,9 +36,11 @@ module.exports = function(req, res){
 			else if(!existsEmail(req.body.examineeEmail, test.examinee)){
 				console.log('User already registered');
 				res.json({'error':'User already Registered'});
+				return;
 			}
 			//Ready to Login
-			res.json({'success':'200'});
+			res.json(test._id);
+			return;
 		})
 	})
 };

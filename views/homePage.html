@@ -286,11 +286,13 @@
 			<div class="modal-content modal-popup">
 				<a href="#" class="close-link" data-dismiss='modal'><i class="icon_close_alt2"></i></a>
 				<h3 class="white">Enter Your Details</h3>
-				<form action="" class="popup-form">
-					<input type="text" class="form-control form-white" placeholder="Name">
-					<input type="text" class="form-control form-white" placeholder="Email Address">
-					<input type="text" class="form-control form-white" placeholder="Test ID">
-					<input type="password" class="form-control form-white" placeholder="Test Password">
+				<form class="popup-form" onsubmit="return loginTest()">
+					<input type="text" id="examineeName" class="form-control form-white" placeholder="Name">
+					<input type="text" id="examineeEmail" class="form-control form-white" placeholder="Email Address">
+					<span id="forExamineeEmail"></span>
+					<input type="text" id="testId" class="form-control form-white" placeholder="Test ID">
+					<input type="password" id="testPassword" class="form-control form-white" placeholder="Test Password">
+					<span id="forTestPassword"></span>
 					<button type="submit" class="btn btn-submit">Attempt Test</button>
 				</form>
 			</div>
@@ -359,8 +361,6 @@
 
               if(flag)
               {
-//                  sessionStorage.setItem('email',$('#email').val());
-//                  sessionStorage.setItem('password',$('#password').val());
                   // e.preventDefault()
 				  validateUser();
                   $('#forPassword').html('Success');
@@ -393,6 +393,72 @@
 						sessionStorage.setItem('examinerID',data._id);
 						sessionStorage.setItem('examinerName', data.name);
 						window.location='index.html';
+					}
+				}
+			})
+		}
+
+		//Attempt Test Requests
+
+		function loginTest(){
+			var flag=1;
+			var passwordValidation= /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+
+			if(($('#examineeEmail').val().length<5)||(typeof($('#email').val())!=typeof('string')))
+			{
+				$('#forExamineeEmail').html('Invalid:Should be string and of atleast 5 characters');
+				// e.preventDefault();
+				flag=0;
+			}
+			else{
+				$('#forExamineeEmail').html('');
+			}
+
+//              if(!$('#testPassword').val().match(passwordValidation))
+//              {
+//                $('#forTestPassword').html('Invalid:Password should between 8 to 15 characters containing at least one lowercase letter, one uppercase letter, one numeric digit, and one special character');
+//                // e.preventDefault();
+//                flag=0;
+//              }
+//              else{
+//                $('#forTestPassword').html('');
+//              }
+
+			if(flag)
+			{
+				// e.preventDefault()
+				validateExaminee();
+//				$('#forTestPassword').html('Success');
+//                  window.location="index.html";
+				return false;
+			}
+			else{
+				// e.preventDefault();
+				flag=1;
+				return false;
+			}
+
+		}
+
+		function validateExaminee(){
+			var userData={'examineeEmail':$('#examineeEmail').val(), 'testPassword':$('#testPassword').val(), 'testId':$('#testId').val(), };
+			$.ajax({
+				type:'POST',
+				url:'http://localhost:3000/api/loginTest',
+				data:userData,
+				error:function(){
+					$('#forTestPassword').html('Some Unknown Error Occurred');
+				},
+				success: function(data){
+					if(data.hasOwnProperty('error')){
+						$('#forTestPassword').html(data.error);
+					}
+					else{
+						$('#forTestPassword').html('Success in Login');
+						sessionStorage.setItem('testId',data);
+						sessionStorage.setItem('examineeName', $('#examineeName').val());
+						sessionStorage.setItem('examineeEmail', $('#examineeEmail').val());
+						window.location='attemptTest.html';
 					}
 				}
 			})

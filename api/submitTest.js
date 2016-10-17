@@ -7,6 +7,14 @@ var mongoose=require('mongoose');
 //User: name, email, score
 //Post Request
 
+function existsEmail(email,examineeArray){
+	for(var i=0; i<examineeArray.length; i++){
+
+		if(examineeArray[i].email==email)
+			return true;
+	}
+	return false;
+}
 
 module.exports = function(req, res){
 
@@ -17,18 +25,23 @@ module.exports = function(req, res){
 		if(err){
 			console.log('Test ID:' + testId +':\n'+err);
 			res.json({'error':err});
+			return;
 		}
 
-		Test.findOneAndUpdate({_id:req.body.testId},{
+		if(existsEmail(req.body.email, test.examinee)){
+			res.json({'error':'Already attempted test'});
+			return;
+		}
+		Test.findOneAndUpdate({_id:testId},{
 			$push:{examinee:{name:req.body.name,email:req.body.email,score:req.body.score}}
-		}, {new : true}, function(err, updatedTest){
+		}, {new:true}, function(err, updatedTest){
 
 			if(err || !updatedTest){
-				res.json({"error":"Could not update Scores"});
+				res.json({"error":err});
 				return;
 			}
 
-			res.json(updatedTest);
+			return res.json(updatedTest);
 		});
 	})
 
