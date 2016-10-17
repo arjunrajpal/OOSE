@@ -189,6 +189,8 @@
           $('#ExaminerName').html(sessionStorage.getItem('examinerName'));
 
       }
+
+
         // $(document).ready(function () {
         //     $("#date-popover").popover({html: true, trigger: "manual"});
         //     $("#date-popover").hide();
@@ -257,23 +259,43 @@
                 testName.innerHTML=message[i].name;
                 sno.style.textAlign="center";
                 testName.style.textAlign="center";
-                var button1=document.createElement("button");
-                forButtons.appendChild(button1);
-                var button2=document.createElement("button");
-                forButtons.appendChild(button2);
-                button1.className="btn btn-primary btn-xs";
-                button1.innerHTML="View Questions";
                 
-                button1.onclick=function(){
-                  window.location="viewQuestions.html?testId="+message[i]._id; //Link for test using JSON
-                }
+                var anchorForQuestions=document.createElement("a");
+                forButtons.appendChild(anchorForQuestions);
+                var button1=document.createElement("button");
+                anchorForQuestions.appendChild(button1);
+                anchorForQuestions.href="http://localhost:3000/viewQuestions.html?testId="+message[i]._id;
+                button1.className="btn btn-success btn-xs";
+                button1.innerHTML="View Questions";
 
-                button2.onclick=function(){
-                  window.location="viewReport.html"; //Link for report using JSON
-                }
-
+                var anchorForReport=document.createElement("a");
+                forButtons.appendChild(anchorForReport);
+                var button2=document.createElement("button");
+                anchorForReport.appendChild(button2);
+                anchorForReport.href="http://localhost:3000/viewQuestions.html?testId="+message[i]._id;
                 button2.className="btn btn-warning btn-xs";
                 button2.innerHTML="View Report";
+                
+                
+                // testId.push(message[i]._id);
+                // button1.onclick=function(){
+                //   window.console.log(i);
+                //   window.location="http://localhost:3000/viewQuestions.html?testId="+testId[i]; //Link for test using JSON
+                // };
+
+                // button2.onclick=function(){
+                //   window.location="index.html"; //Link for report using JSON
+                // };
+
+                //window.console.log(message[i]._id);
+                
+
+                // var anchorForQuestions=document.createElement("a");
+                // button1.appendChild(anchorForQuestions);
+                // var anchorForReport=document.createElement("a");
+                // button2.appendChild(anchorForReport);
+
+                // anchorForQuestions.href="http://localhost:3000/viewQuestions.html?testId="+message[i]._id;
 
 
             }
