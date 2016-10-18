@@ -455,9 +455,10 @@
 					}
 					else{
 						$('#forTestPassword').html('Success in Login');
-						sessionStorage.setItem('testId',data);
+						sessionStorage.setItem('testId',data.id);
 						sessionStorage.setItem('examineeName', $('#examineeName').val());
 						sessionStorage.setItem('examineeEmail', $('#examineeEmail').val());
+						sessionStorage.setItem('testDuration',data.duration);
 						window.location='attemptTest.html';
 					}
 				}

@@ -42,6 +42,7 @@
 
             <div class="top-menu">
               <ul class="nav pull-right top-menu">
+                  <li><label id="time" class="logout" style="background-color: #FF6B6B"></label></li>
                     <li><a class="logout" onclick="return submitTest()" >Submit Test</a></li>
               </ul>
             </div>
@@ -235,20 +236,20 @@
 //              clone.find("input[value="+questions[i-1].correct+"]").attr("checked","true");
               clone.appendTo('#column');
           }
+
+          //Start the timer
+          timer();
       }
 
       function submitTest(){
           var score=0;
-          window.console.log(numberOfQuestions);
           for(var i=1; i<=numberOfQuestions;i++){
               var correct=$('input[name=optionq'+i+']:checked','#q'+i).val();
-              window.console.log(correct);
               if(correct==answers[i-1]){
                   score++;
               }
           }
           var data ={testId:testId, name:window.sessionStorage.getItem('examineeName'), email:window.sessionStorage.getItem('examineeEmail'),score:score.toString()};
-          window.console.log(JSON.stringify(data));
           $.ajax({
               url:'http://localhost:3000/api/submitTest',
               type:'POST',
@@ -257,7 +258,6 @@
                   window.location='homePage.html'
               },
               success:function(test){
-                  window.console.log(test);
                   if(test.hasOwnProperty('error')){
                       $('#messageHeader').html("Error");
                       $('#message').html(test.error);
@@ -280,9 +280,44 @@
           window.sessionStorage.clear();
           window.location = 'homePage.html';
       }
-      $(function(){
-          $('select.styled').customSelect();
-      });
+
+      //Timer
+
+      function startTimer(duration, display) {
+          var start = Date.now(),
+                  diff,
+                  minutes,
+                  seconds;
+          function timer() {
+              // get the number of seconds that have elapsed since
+              // startTimer() was called
+              diff = duration - (((Date.now() - start) / 1000) | 0);
+
+              // does the same job as parseInt truncates the float
+              minutes = (diff / 60) | 0;
+              seconds = (diff % 60) | 0;
+
+              minutes = minutes < 10 ? "0" + minutes : minutes;
+              seconds = seconds < 10 ? "0" + seconds : seconds;
+
+              display.textContent = minutes + ":" + seconds;
+
+              if (diff <= 0) {
+                  // add one second so that the count down starts at the full duration
+                  // example 05:00 not 04:59
+                  start = Date.now() + 1000;
+              }
+          };
+          // we don't want to wait a full second before the timer starts
+          timer();
+          setInterval(timer, 1000);
+      }
+
+      function timer() {
+          var time = sessionStorage.getItem('testDuration')*60,
+                  display = document.querySelector('#time');
+          startTimer(time, display);
+      };
 
   </script>
 

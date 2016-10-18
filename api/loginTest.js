@@ -39,7 +39,7 @@ module.exports = function(req, res){
 				return;
 			}
 			//Ready to Login
-			res.json(test._id);
+			res.json({"id":test._id, "duration":test.duration});
 			return;
 		})
 	})
