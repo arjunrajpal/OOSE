@@ -42,7 +42,7 @@
 
             <div class="top-menu">
               <ul class="nav pull-right top-menu">
-                  <li><label id="time" class="logout" style="background-color: #FF6B6B"></label></li>
+                  <li><label id="time" class="logout" style="background-color: #ff4144"></label></li>
                     <li><a class="logout" onclick="return submitTest()" >Submit Test</a></li>
               </ul>
             </div>
@@ -61,8 +61,8 @@
                   <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
                   <h5 id="ExamineeName" class="centered"></h5>
                     
-                  <li class="mt">
-                      <a class="active" href="#index">
+                  <li class="mt" id="sidebarq1">
+                      <a class="active" href="#container">
                           <i class="fa fa-dashboard"></i>
                           <span>Question 1</span>
                       </a>
@@ -182,6 +182,7 @@
       var answers=[];
       var numberOfQuestions;
       var q1clone= $('#q1').clone();
+      var q1SidebarClone = $('#sidebarq1').clone();
 //      function getParameterByName(name, url) {
 //        if (!url) url = window.location.href;
 //        name = name.replace(/[\[\]]/g, "\\$&");
@@ -235,6 +236,13 @@
               answers.push(questions[i-1].correct);
 //              clone.find("input[value="+questions[i-1].correct+"]").attr("checked","true");
               clone.appendTo('#column');
+
+              //Side Bar Clone
+              var sideclone = q1SidebarClone.clone();
+              sideclone.attr('id', 'sidebarq'+i);
+              sideclone.find('a').attr('href', '#q'+(i-1));
+              sideclone.find('span').html('Question '+i);
+              sideclone.appendTo('#nav-accordion');
           }
 
           //Start the timer
