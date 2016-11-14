@@ -8,6 +8,10 @@ console.log('hello');
 //App Requirements
 var app=express();
 
+app.get('/', function(req, res) {
+    res.sendfile('homePage.html', { root: __dirname + "/views" } );
+});
+
 var port = normalizePort(process.env.PORT||3000);
 app.set('port', port);
 
@@ -32,10 +36,7 @@ app.use(express.static(path.join(__dirname, 'views')));
 
 app.listen(3000);
 
-// //Home Page Route
-// express.Router.get('/', function(req, res){
-//   res.render('/homePage.html');
-// });
+
 
 //API Routing
 

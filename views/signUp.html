@@ -103,8 +103,8 @@
               if(flag)
               {
                   // e.preventDefault()
-				  registerUser();
-                  $('#error').html('Success');
+				          registerUser();
+                  // $('#error').html('Success');
                  // window.location="index.html";
                   return false;
               }
@@ -126,7 +126,7 @@
 				},
 				success: function(data){
 					if(data.hasOwnProperty('error')){
-						$('#forPassword').html(data.error);
+						$('#error').html(data.error);
 					}
 					else{
 						$('#error').html('Success in Sign Up');

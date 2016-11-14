@@ -47,7 +47,7 @@
             </div>
             <div class="top-menu">
               <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.html">Logout</a></li>
+                    <li><a class="logout" href="homePage.html">Logout</a></li>
               </ul>
             </div>
         </header>
@@ -98,7 +98,7 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper site-min-height">
-            <h3><i class="fa fa-angle-right"></i>All Tests</h3>
+            <h3><i class="fa fa-angle-right"></i>Test Report</h3>
           <div class="row mt">
             <div class="col-lg-12">
                       <!-- <div class="content-panel">
@@ -191,63 +191,32 @@
           $('#ExaminerName').html(sessionStorage.getItem('examinerName'));
 
       }
-        // $(document).ready(function () {
-        //     $("#date-popover").popover({html: true, trigger: "manual"});
-        //     $("#date-popover").hide();
-        //     $("#date-popover").click(function (e) {
-        //         $(this).hide();
-        //     });
-        
-        //     $("#my-calendar").zabuto_calendar({
-        //         action: function () {
-        //             return myDateFunction(this.id, false);
-        //         },
-        //         action_nav: function () {
-        //             return myNavFunction(this.id);
-        //         },
-        //         ajax: {
-        //             url: "show_data.php?action=1",
-        //             modal: true
-        //         },
-        //         legend: [
-        //             {type: "text", label: "Special event", badge: "00"},
-        //             {type: "block", label: "Regular event", }
-        //         ]
-        //     });
-        // });
-        
-        
-        // function myNavFunction(id) {
-        //     $("#date-popover").hide();
-        //     var nav = $("#" + id).data("navigation");
-        //     var to = $("#" + id).data("to");
-        //     console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
-        // }
+       
+       function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+      }
 
-        // $('#view-test').hide();
+      var testId = getParameterByName('testId') 
 
-        // function viewTests()
-        // {
-        //   $('#details').hide();
-        //   $('#view-test').show();
-        // }
-
-        // function viewDetails()
-        // {
-        //   $('#details').show();
-        //   $('#view-test').hide();
-        // }
-
-        // $(document).ready(function()
-        // {
-        //   $.ajax({
-        //     url:'getTests';
-        //     type:'get';
-        //     data:data;
-        //     success:function(message){
+        $(document).ready(function()
+        {
+          $.ajax({
+            url:'http://localhost:3000/api/viewReport',
+            type:'GET',
+            data:{testId:testId},
+            error:function(){
+              window.location='viewTest.html'
+            },
+            success:function(message){
+              message = message.sort(function(a, b){return b.score-a.score})
               var table = document.getElementById('testsTable');
-              var message=5;
-              for(i=1;i<=message;i++)
+              for(i=1;i<=message.length;i++)
               {
                 //alert("hello");
                 var row = table.insertRow(i);
@@ -256,18 +225,18 @@
                 var emailID = row.insertCell(2);
                 var testScore = row.insertCell(3);
                 sno.innerHTML=i;
-                studentName.innerHTML="ABC";
-                emailID.innerHTML="abc@xyz.com";
-                testScore.innerHTML="5";
+                studentName.innerHTML=message[i-1].name;
+                emailID.innerHTML=message[i-1].email;
+                testScore.innerHTML=message[i-1].score;
                 sno.style.textAlign="center";
                 studentName.style.textAlign="center";
                 emailID.style.textAlign="center";
                 testScore.style.textAlign="center";
-            }
-      //     }
+              }
+          }
 
-      //   });
-      // });
+        });
+      });
     </script>
   
 
